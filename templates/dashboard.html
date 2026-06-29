@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - IDS{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1>Network Traffic Dashboard</h1>
+    <div class="status-indicator">
+        <span class="status-dot status-active"></span>
+        <span>Monitoring Active</span>
+    </div>
+</div>
+
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-label">Total Packets Processed</div>
+        <div class="metric-value" id="total-processed">{{ stats.total_processed }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Normal Traffic</div>
+        <div class="metric-value metric-normal">{{ stats.normal }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Attacks Detected</div>
+        <div class="metric-value metric-attack">{{ stats.dos + stats.probing + stats.r2l + stats.u2r }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Model Accuracy</div>
+        <div class="metric-value metric-accuracy">{{ "%.2f"|format(stats.model_accuracy * 100) }}%</div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="chart-container">
+        <h3>Traffic Breakdown by Category</h3>
+        <canvas id="trafficChart"></canvas>
+    </div>
+    
+    <div class="live-feed-container">
+        <h3>Live Traffic Feed</h3>
+        <div class="live-feed" id="liveFeed">
+            <div class="feed-item">
+                <span class="feed-time">--:--:--</span>
+                <span class="feed-class">Waiting for data...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sparkline-container">
+    <h3>Traffic Volume (Last 60 Seconds)</h3>
+    <canvas id="sparklineChart"></canvas>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script>
+    const initialStats = {{ stats | tojson }};
+    initDashboard(initialStats);
+</script>
+{% endblock %}

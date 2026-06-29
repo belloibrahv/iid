@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Intrusion Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="home-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="material-icons logo-icon">security</span>
+                <span class="logo-text">IDS</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#team" class="nav-link">Our Team</a>
+                <a href="/login" class="nav-link nav-cta">
+                    <span class="material-icons nav-icon">login</span>
+                    Login to Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="hero-title">
+                    <span class="hero-title-line">Protect Your Network</span>
+                    <span class="hero-title-line hero-title-highlight">From Bad Attacks</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Our smart system watches over your computer network and stops hackers before they can cause any harm. It's like having a security guard that never sleeps!
+                </p>
+                <div class="hero-buttons">
+                    <a href="/login" class="btn btn-primary btn-large">
+                        <span class="material-icons btn-icon">rocket_launch</span>
+                        Get Started
+                    </a>
+                    <a href="#how-it-works" class="btn btn-secondary btn-large">
+                        <span class="material-icons btn-icon">info</span>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+                <div class="hero-shape hero-shape-1"></div>
+                <div class="hero-shape hero-shape-2"></div>
+                <div class="hero-shape hero-shape-3"></div>
+                <div class="hero-icon-container">
+                    <span class="material-icons hero-icon">shield</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What is This System?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Let us explain in simple words</p>
+            
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-icon-container">
+                        <span class="material-icons about-icon">visibility</span>
+                    </div>
+                    <h3 class="about-card-title">It Watches Everything</h3>
+                    <p class="about-card-text">
+                        Our system keeps an eye on all the data moving through your network. It looks at every single message that travels between computers.
+                    </p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-icon-container">
+                        <span class="material-icons about-icon">psychology</span>
+                    </div>
+                    <h3 class="about-card-title">It's Really Smart</h3>
+                    <p class="about-card-text">
+                        Using artificial intelligence (like a robot brain), it learns what normal traffic looks like and spots anything that seems strange or dangerous.
+                    </p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="about-icon-container">
+                        <span class="material-icons about-icon">notifications_active</span>
+                    </div>
+                    <h3 class="about-card-title">It Alerts You Fast</h3>
+                    <p class="about-card-text">
+                        When it finds something bad, it immediately tells you so you can stop the attack before it causes any problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">How Does It Work?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Simple steps to keep you safe</p>
+            
+            <div class="steps-container">
+                <div class="step-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-number">
+                        <span class="material-icons">storage</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Collect Data</h3>
+                        <p class="step-text">
+                            The system gathers information about all the network traffic - who's sending data, where it's going, and what it contains.
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item" data-aos="fade-left" data-aos-delay="300">
+                    <div class="step-number">
+                        <span class="material-icons">smart_toy</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Analyze with AI</h3>
+                        <p class="step-text">
+                            Our smart computer programs (machine learning models) look at the data and decide if it's normal or if it looks like an attack.
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item" data-aos="fade-right" data-aos-delay="400">
+                    <div class="step-number">
+                        <span class="material-icons">bug_report</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Detect Attacks</h3>
+                        <p class="step-text">
+                            The system can spot different types of bad attacks like DoS (overloading systems), probing (snooping around), and more.
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item" data-aos="fade-left" data-aos-delay="500">
+                    <div class="step-number">
+                        <span class="material-icons">verified_user</span>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Alert & Protect</h3>
+                        <p class="step-text">
+                            When danger is found, you get an instant alert with all the details so you can take action right away to stay safe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Cool Features</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">What makes our system special</p>
+            
+            <div class="features-grid">
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">speed</span>
+                    </div>
+                    <h3 class="feature-title">Super Fast</h3>
+                    <p class="feature-text">Works in real-time to catch attacks as they happen, not after it's too late.</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">gps_fixed</span>
+                    </div>
+                    <h3 class="feature-title">Very Accurate</h3>
+                    <p class="feature-text">Our AI is trained on lots of data to make sure it doesn't make mistakes.</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">dashboard</span>
+                    </div>
+                    <h3 class="feature-title">Easy Dashboard</h3>
+                    <p class="feature-text">See everything on one simple screen with colorful charts and clear information.</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">notifications</span>
+                    </div>
+                    <h3 class="feature-title">Smart Alerts</h3>
+                    <p class="feature-text">Get notified only when something important happens, so you're not overwhelmed.</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">assessment</span>
+                    </div>
+                    <h3 class="feature-title">Detailed Reports</h3>
+                    <p class="feature-text">Keep track of all events and attacks with detailed logs and reports.</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="feature-icon-container">
+                        <span class="material-icons feature-icon">lock</span>
+                    </div>
+                    <h3 class="feature-title">Secure Login</h3>
+                    <p class="feature-text">Only authorized people can access the system to keep everything safe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Meet Our Team</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">The people who built this amazing system</p>
+            
+            <!-- Supervisor -->
+            <div class="team-section">
+                <h3 class="team-section-title" data-aos="fade-up" data-aos-delay="200">Supervisor</h3>
+                <div class="supervisor-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="supervisor-image">
+                        <img class="team-avatar avatar-large" src="{{ url_for('static', filename='images/team/supervisor-ogunbanjo.png') }}" alt="Portrait of Mrs. Ogunbanjo">
+                    </div>
+                    <div class="supervisor-info">
+                        <h4 class="supervisor-name">Mrs. Ogunbanjo</h4>
+                        <p class="supervisor-role">
+                            <span class="material-icons role-icon">school</span>
+                            Project Supervisor
+                        </p>
+                        <p class="supervisor-description">
+                            Our wonderful supervisor who guided us throughout this project with her expertise and support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Researchers -->
+            <div class="team-section">
+                <h3 class="team-section-title" data-aos="fade-up" data-aos-delay="200">Student Researchers</h3>
+                <div class="researchers-grid">
+                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="300">
+                        <div class="researcher-image">
+                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/alobalade-david-victor.png') }}" alt="Portrait of Alobalade David Victor">
+                        </div>
+                        <h4 class="researcher-name">Alobalade David Victor</h4>
+                        <p class="researcher-matric">20220204294</p>
+                        <p class="researcher-role">
+                            <span class="material-icons role-icon">badge</span>
+                            Student Researcher
+                        </p>
+                    </div>
+                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="350">
+                        <div class="researcher-image">
+                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/durojaiye-temitayo-samson.png') }}" alt="Portrait of Durojaiye Temitayo Samson">
+                        </div>
+                        <h4 class="researcher-name">Durojaiye Temitayo Samson</h4>
+                        <p class="researcher-matric">20220204270</p>
+                        <p class="researcher-role">
+                            <span class="material-icons role-icon">badge</span>
+                            Student Researcher
+                        </p>
+                    </div>
+                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="400">
+                        <div class="researcher-image">
+                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/oseni-nafiu-bolanle.png') }}" alt="Portrait of Oseni Nafiu Bolanle">
+                        </div>
+                        <h4 class="researcher-name">Oseni Nafiu Bolanle</h4>
+                        <p class="researcher-matric">20220204301</p>
+                        <p class="researcher-role">
+                            <span class="material-icons role-icon">badge</span>
+                            Student Researcher
+                        </p>
+                    </div>
+                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="450">
+                        <div class="researcher-image">
+                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/sofoluwe-omotola-oyindamola.png') }}" alt="Portrait of Sofoluwe Omotola Oyindamola">
+                        </div>
+                        <h4 class="researcher-name">Sofoluwe Omotola Oyindamola</h4>
+                        <p class="researcher-matric">20220204286</p>
+                        <p class="researcher-role">
+                            <span class="material-icons role-icon">badge</span>
+                            Student Researcher
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="cta-title">Ready to Protect Your Network?</h2>
+            <p class="cta-subtitle">Start using our Intelligent Intrusion Detection System today</p>
+            <a href="/login" class="btn btn-primary btn-large">
+                <span class="material-icons btn-icon">dashboard</span>
+                Access Dashboard
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">
+                        <span class="material-icons footer-icon">security</span>
+                        About IDS
+                    </h4>
+                    <p class="footer-text">
+                        An Intelligent Intrusion Detection System built to protect networks from cyber attacks using machine learning.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">
+                        <span class="material-icons footer-icon">link</span>
+                        Quick Links
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="#about"><span class="material-icons link-icon">arrow_forward</span>About</a></li>
+                        <li><a href="#how-it-works"><span class="material-icons link-icon">arrow_forward</span>How It Works</a></li>
+                        <li><a href="#team"><span class="material-icons link-icon">arrow_forward</span>Our Team</a></li>
+                        <li><a href="/login"><span class="material-icons link-icon">arrow_forward</span>Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">
+                        <span class="material-icons footer-icon">contact_mail</span>
+                        Contact
+                    </h4>
+                    <p class="footer-text">
+                        For questions or support, please contact our team.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Intelligent Intrusion Detection System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.home-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

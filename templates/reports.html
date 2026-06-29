@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Reports - IDS{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Classification Report</h1>
+</div>
+
+<div class="model-tabs">
+    <button class="model-tab active" data-model="random_forest">Random Forest</button>
+    <button class="model-tab" data-model="decision_tree">Decision Tree</button>
+    <button class="model-tab" data-model="svm">SVM</button>
+</div>
+
+<div class="report-content" id="reportContent">
+    {% if eval_results.get('random_forest') %}
+    {% set rf = eval_results['random_forest'] %}
+    <div class="metrics-summary">
+        <div class="summary-card">
+            <div class="summary-label">Accuracy</div>
+            <div class="summary-value">{{ "%.3f"|format(rf['classification_report']['accuracy']) }}</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">Precision</div>
+            <div class="summary-value">{{ "%.3f"|format(rf['classification_report']['macro avg']['precision']) }}</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">Recall</div>
+            <div class="summary-value">{{ "%.3f"|format(rf['classification_report']['macro avg']['recall']) }}</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">F1-Score</div>
+            <div class="summary-value">{{ "%.3f"|format(rf['classification_report']['macro avg']['f1-score']) }}</div>
+        </div>
+    </div>
+
+    <div class="per-class-table-container">
+        <h3>Per-Class Metrics</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1-Score</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class_name in ['normal', 'dos', 'probing', 'r2l', 'u2r'] %}
+                {% if class_name in rf['classification_report'] %}
+                <tr>
+                    <td>{{ class_name.upper() }}</td>
+                    <td>{{ "%.3f"|format(rf['classification_report'][class_name]['precision']) }}</td>
+                    <td>{{ "%.3f"|format(rf['classification_report'][class_name]['recall']) }}</td>
+                    <td>{{ "%.3f"|format(rf['classification_report'][class_name]['f1-score']) }}</td>
+                    <td>{{ rf['classification_report'][class_name]['support'] }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="accuracy-comparison">
+        <h3>Model Accuracy Comparison</h3>
+        <div class="progress-bars">
+            {% if eval_results.get('random_forest') %}
+            <div class="progress-item">
+                <div class="progress-label">Random Forest</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ (eval_results['random_forest']['classification_report']['accuracy'] * 100) }}%">
+                        {{ "%.2f"|format(eval_results['random_forest']['classification_report']['accuracy'] * 100) }}%
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if eval_results.get('decision_tree') %}
+            <div class="progress-item">
+                <div class="progress-label">Decision Tree</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ (eval_results['decision_tree']['classification_report']['accuracy'] * 100) }}%">
+                        {{ "%.2f"|format(eval_results['decision_tree']['classification_report']['accuracy'] * 100) }}%
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if eval_results.get('svm') %}
+            <div class="progress-item">
+                <div class="progress-label">SVM</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ (eval_results['svm']['classification_report']['accuracy'] * 100) }}%">
+                        {{ "%.2f"|format(eval_results['svm']['classification_report']['accuracy'] * 100) }}%
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <div class="no-data">
+        No evaluation results available. Please run the ML pipeline first.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+{% endblock %}
