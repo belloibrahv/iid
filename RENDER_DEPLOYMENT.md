@@ -24,9 +24,13 @@ git push origin main
 
 Your repository should include:
 - `render.yaml` - Render configuration
-- `requirements.txt` - Python dependencies
+- `Dockerfile` - Container build and runtime definition
+- `.dockerignore` - Docker build context exclusions
+- `requirements-prod.txt` - production Python dependencies used by Docker
+- `requirements.txt` - full local development/test dependencies
 - `wsgi.py` - WSGI entry point
 - `.env.example` - Environment variables template
+- `models/*.joblib` and `models/*.json` - trained model and preprocessing artefacts
 - All application code and templates
 
 ## Step 2: Create Render Account
@@ -66,10 +70,12 @@ Copy the **Internal Database URL** - this will be automatically set as `DATABASE
    - **Name**: `ids-app`
    - **Region**: Same as database
    - **Branch**: `main`
-   - **Runtime**: Python 3
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn wsgi:app`
+   - **Runtime**: Docker
+   - **Dockerfile Path**: `./Dockerfile`
+   - **Docker Build Context Directory**: `.`
    - **Instance Type**: Free (for testing) or paid for production
+
+The Dockerfile pins the service to Python 3.11, which avoids Render selecting a newer Python version that forces scientific packages such as scikit-learn, NumPy, and pandas to build from source.
 
 ### Add Environment Variables
 
@@ -98,9 +104,9 @@ Use the generated values for SECRET_KEY and API_KEY.
 
 Click "Create Web Service". Render will:
 - Clone your repository
-- Install dependencies
-- Build the application
-- Start the Gunicorn server
+- Build the Docker image
+- Install dependencies inside the pinned Python 3.11 image
+- Start the Gunicorn server from the container `CMD`
 
 ## Step 5: Configure Domain (Optional)
 
@@ -177,14 +183,24 @@ For now, filesystem sessions work but sessions will be lost on redeploy.
 **Issue**: Dependencies fail to install
 ```bash
 # Check logs for specific error
-# Ensure requirements.txt has correct versions
+# Ensure Dockerfile is being used and the service runtime is Docker
+# Ensure requirements.txt versions have Python 3.11 wheels
 ```
 
 **Issue**: Python version mismatch
 ```bash
-# Ensure render.yaml specifies correct Python version
-runtime: python
-pythonVersion: 3.9.0
+# Ensure render.yaml uses Docker and Dockerfile uses Python 3.11
+runtime: docker
+dockerfilePath: ./Dockerfile
+```
+
+### Model Artefact Issues
+
+**Issue**: Service starts but classification fails, or logs mention missing `.joblib` files
+```bash
+# Ensure trained artefacts are committed or otherwise provided during build
+git add models/*.joblib models/*.json
+git commit -m "Add trained model artefacts"
 ```
 
 ### Database Connection Issues

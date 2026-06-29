@@ -1,0 +1,22 @@
+[
+  "flag",
+  "num_compromised",
+  "root_shell",
+  "num_root",
+  "num_outbound_cmds",
+  "is_host_login",
+  "count",
+  "srv_count",
+  "srv_serror_rate",
+  "srv_rerror_rate",
+  "diff_srv_rate",
+  "srv_diff_host_rate",
+  "dst_host_count",
+  "dst_host_same_srv_rate",
+  "dst_host_diff_srv_rate",
+  "dst_host_srv_diff_host_rate",
+  "dst_host_serror_rate",
+  "dst_host_srv_serror_rate",
+  "dst_host_rerror_rate",
+  "dst_host_srv_rerror_rate"
+]

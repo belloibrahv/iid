@@ -147,6 +147,17 @@ python app.py
 
 The application will start on `http://localhost:5000`
 
+### Run with Docker
+
+The production container pins Python to 3.11 so scientific dependencies install from stable wheels instead of being compiled against a newer Python version.
+
+```bash
+docker build -t ids-app .
+docker run --env-file .env -p 5000:10000 ids-app
+```
+
+The container installs `requirements-prod.txt`, listens on `PORT`, and defaults to `10000`, matching Render's Docker web service behavior.
+
 ### Step 4: Access the Dashboard
 
 1. Open `http://localhost:5000` in your browser

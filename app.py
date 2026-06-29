@@ -44,6 +44,10 @@ def create_app():
     except Exception as e:
         print(f"Warning: Could not load inference engine: {e}")
         print("Please run the ML pipeline first to generate model artefacts.")
+
+    @app.route('/health')
+    def health():
+        return {'status': 'ok'}, 200
     
     # Root route redirects to dashboard
     @app.route('/')

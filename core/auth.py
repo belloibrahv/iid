@@ -122,7 +122,14 @@ def init_admin_user(username: str = 'admin', password: str = 'admin123'):
     
     if not existing_user:
         password_hash = hash_password(password)
-        user_id = db.create_user(username, password_hash)
+        try:
+            user_id = db.create_user(username, password_hash)
+        except Exception:
+            existing_user = db.get_user_by_username(username)
+            if existing_user:
+                print(f"Admin user '{username}' already exists.")
+                return
+            raise
         print(f"Created admin user: {username} with ID: {user_id}")
         print(f"Default password: {password}")
         print("Please change this password after first login!")

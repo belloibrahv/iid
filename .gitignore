@@ -45,9 +45,8 @@ ENV/
 *.sqlite
 *.sqlite3
 
-# Model artefacts (large files)
-models/*.joblib
-models/*.json
+# Model artefacts are required by the deployed app.
+# Commit models/*.joblib and models/*.json when publishing a trained model.
 models/*.pkl
 
 # Dataset files (large files)
