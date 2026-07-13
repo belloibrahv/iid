@@ -3,6 +3,11 @@
 {% block title %}Event Log - IDS{% endblock %}
 
 {% block content %}
+<div class="sim-banner">
+    <span class="material-icons sim-banner-icon">science</span>
+    <span><strong>Simulated Data</strong> — Events are synthetically generated to demonstrate real-time classification across all 5 NSL-KDD traffic categories.</span>
+</div>
+
 <div class="page-header">
     <h1>Event Log</h1>
     <a href="{{ url_for('dashboard.event_log', **request.args) }}&export=1" class="btn btn-primary">Download CSV</a>
@@ -47,6 +52,7 @@
                 <th>Predicted Class</th>
                 <th>Confidence</th>
                 <th>Source IP</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody>
@@ -61,10 +67,17 @@
                 </td>
                 <td>{{ "%.3f"|format(event.confidence) }}</td>
                 <td>{{ event.source_ip or 'N/A' }}</td>
+                <td>
+                    {% if event.is_simulated %}
+                    <span class="sim-inline-tag">SIMULATED</span>
+                    {% else %}
+                    <span class="real-inline-tag">LIVE</span>
+                    {% endif %}
+                </td>
             </tr>
             {% else %}
             <tr>
-                <td colspan="5" class="no-data">No events found</td>
+                <td colspan="6" class="no-data">No events found</td>
             </tr>
             {% endfor %}
         </tbody>

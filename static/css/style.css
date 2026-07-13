@@ -113,11 +113,14 @@ body {
 .nav-link {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     padding: 15px 20px;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: all 0.2s;
 }
+
+.nav-link .material-icons { font-size: 1.25rem; }
 
 .nav-link:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -860,3 +863,154 @@ body {
         align-items: stretch;
     }
 }
+
+/* ── Simulated Data Banner ────────────────────────────────── */
+.sim-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(90deg, #fff3cd, #fff8e1);
+    border: 1px solid #ffc107;
+    border-left: 4px solid #e6a817;
+    border-radius: 6px;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.875rem;
+    color: #664d00;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.sim-banner-icon {
+    color: #e6a817;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* ── Sim / Live inline tags ───────────────────────────────── */
+.sim-inline-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+    vertical-align: middle;
+    margin-left: 0.25rem;
+}
+
+.real-inline-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #28a745;
+    vertical-align: middle;
+    margin-left: 0.25rem;
+}
+
+.sim-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.15rem 0.5rem;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+/* ── Live feed columns ────────────────────────────────────── */
+.feed-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #999;
+    border-bottom: 2px solid #eee !important;
+    padding-bottom: 8px !important;
+}
+
+.feed-item {
+    display: grid;
+    grid-template-columns: 75px 1fr 110px 70px;
+    padding: 8px 6px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    align-items: center;
+    gap: 4px;
+}
+
+.feed-item:last-child { border-bottom: none; }
+
+.feed-time     { color: #888; font-family: monospace; font-size: 12px; }
+.feed-ip       { color: #555; font-family: monospace; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.feed-confidence { text-align: right; color: #666; font-family: monospace; font-size: 12px; }
+
+/* ── Attack Breakdown Grid ───────────────────────────────── */
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.breakdown-card {
+    background: white;
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid transparent;
+    transition: box-shadow 0.2s;
+}
+
+.breakdown-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+.breakdown-icon {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.breakdown-icon .material-icons { font-size: 1.4rem; color: white; }
+
+.breakdown-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.breakdown-label {
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dos-card   { border-left-color: #dc3545; }
+.probe-card { border-left-color: #ffc107; }
+.r2l-card   { border-left-color: #fd7e14; }
+.u2r-card   { border-left-color: #6f42c1; }
+
+.dos-card   .breakdown-icon { background: #dc3545; }
+.probe-card .breakdown-icon { background: #ffc107; }
+.r2l-card   .breakdown-icon { background: #fd7e14; }
+.u2r-card   .breakdown-icon { background: #6f42c1; }

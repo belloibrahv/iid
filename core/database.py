@@ -131,7 +131,8 @@ class Database:
                         su_attempted INTEGER,
                         num_root REAL,
                         num_failed_logins REAL,
-                        raw_features_json TEXT
+                        raw_features_json TEXT,
+                        is_simulated INTEGER DEFAULT 0
                     )
                 ''')
             else:
@@ -162,7 +163,8 @@ class Database:
                         su_attempted INTEGER,
                         num_root REAL,
                         num_failed_logins REAL,
-                        raw_features_json TEXT
+                        raw_features_json TEXT,
+                        is_simulated INTEGER DEFAULT 0
                     )
                 ''')
             
@@ -192,6 +194,12 @@ class Database:
                     )
                 ''')
             
+            # Migration: add is_simulated column if not present (idempotent)
+            try:
+                cursor.execute('ALTER TABLE events ADD COLUMN is_simulated INTEGER DEFAULT 0')
+            except Exception:
+                pass  # Column already exists
+
             # Create indexes for better query performance
             cursor.execute('''
                 CREATE INDEX IF NOT EXISTS idx_events_timestamp 
@@ -291,8 +299,9 @@ class Database:
                         same_srv_rate, diff_srv_rate, dst_host_count,
                         dst_host_srv_count, dst_host_same_srv_rate,
                         dst_host_diff_srv_rate, num_compromised, root_shell,
-                        su_attempted, num_root, num_failed_logins, raw_features_json
-                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id
+                        su_attempted, num_root, num_failed_logins,
+                        raw_features_json, is_simulated
+                    ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id
                 ''', (
                     event_data.get('timestamp', datetime.utcnow().isoformat()),
                     event_data['predicted_class'],
@@ -318,7 +327,8 @@ class Database:
                     event_data.get('su_attempted'),
                     event_data.get('num_root'),
                     event_data.get('num_failed_logins'),
-                    raw_features_json
+                    raw_features_json,
+                    event_data.get('is_simulated', 0)
                 ))
                 return cursor.fetchone()['id']
             else:
@@ -330,8 +340,9 @@ class Database:
                         same_srv_rate, diff_srv_rate, dst_host_count,
                         dst_host_srv_count, dst_host_same_srv_rate,
                         dst_host_diff_srv_rate, num_compromised, root_shell,
-                        su_attempted, num_root, num_failed_logins, raw_features_json
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        su_attempted, num_root, num_failed_logins,
+                        raw_features_json, is_simulated
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 ''', (
                     event_data.get('timestamp', datetime.utcnow().isoformat()),
                     event_data['predicted_class'],
@@ -357,7 +368,8 @@ class Database:
                     event_data.get('su_attempted'),
                     event_data.get('num_root'),
                     event_data.get('num_failed_logins'),
-                    raw_features_json
+                    raw_features_json,
+                    event_data.get('is_simulated', 0)
                 ))
                 return cursor.lastrowid
     

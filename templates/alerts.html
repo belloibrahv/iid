@@ -3,6 +3,11 @@
 {% block title %}Alerts - IDS{% endblock %}
 
 {% block content %}
+<div class="sim-banner">
+    <span class="material-icons sim-banner-icon">science</span>
+    <span><strong>Simulated Data</strong> — Alerts are generated from synthetic NSL-KDD traffic profiles for demonstration purposes.</span>
+</div>
+
 <div class="page-header">
     <h1>Intrusion Alerts</h1>
     <div class="alert-badge">
@@ -47,6 +52,9 @@
                     <span class="status-badge status-{{ alert.status }}">
                         {{ alert.status }}
                     </span>
+                    {% if alert.source_ip and '[SIM]' in (alert.source_ip or '') %}
+                    <span class="sim-inline-tag">SIM</span>
+                    {% endif %}
                 </td>
                 <td>
                     <button class="btn btn-sm btn-detail" onclick="showAlertDetail({{ alert.id }})">Details</button>

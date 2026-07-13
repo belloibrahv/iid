@@ -3,11 +3,16 @@
 {% block title %}Dashboard - IDS{% endblock %}
 
 {% block content %}
+<div class="sim-banner">
+    <span class="material-icons sim-banner-icon">science</span>
+    <span><strong>Simulated Data Mode</strong> — All traffic shown is synthetically generated from NSL-KDD feature profiles to demonstrate system behaviour. No real network is being monitored.</span>
+</div>
+
 <div class="dashboard-header">
     <h1>Network Traffic Dashboard</h1>
     <div class="status-indicator">
         <span class="status-dot status-active"></span>
-        <span>Monitoring Active</span>
+        <span>Live Simulation Active</span>
     </div>
 </div>
 
@@ -25,7 +30,11 @@
         <div class="metric-value metric-attack">{{ stats.dos + stats.probing + stats.r2l + stats.u2r }}</div>
     </div>
     <div class="metric-card">
-        <div class="metric-label">Model Accuracy</div>
+        <div class="metric-label">Active Alerts</div>
+        <div class="metric-value metric-attack" id="active-alerts">{{ stats.active_alerts }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Model Accuracy (RF)</div>
         <div class="metric-value metric-accuracy">{{ "%.2f"|format(stats.model_accuracy * 100) }}%</div>
     </div>
 </div>
@@ -37,11 +46,19 @@
     </div>
     
     <div class="live-feed-container">
-        <h3>Live Traffic Feed</h3>
+        <h3>Live Traffic Feed <span class="sim-tag">SIMULATED</span></h3>
         <div class="live-feed" id="liveFeed">
+            <div class="feed-item feed-header">
+                <span class="feed-time">Time</span>
+                <span class="feed-ip">Source IP</span>
+                <span class="feed-class">Class</span>
+                <span class="feed-confidence">Confidence</span>
+            </div>
             <div class="feed-item">
                 <span class="feed-time">--:--:--</span>
+                <span class="feed-ip">—</span>
                 <span class="feed-class">Waiting for data...</span>
+                <span class="feed-confidence">—</span>
             </div>
         </div>
     </div>
@@ -50,6 +67,38 @@
 <div class="sparkline-container">
     <h3>Traffic Volume (Last 60 Seconds)</h3>
     <canvas id="sparklineChart"></canvas>
+</div>
+
+<!-- Attack breakdown summary -->
+<div class="breakdown-grid">
+    <div class="breakdown-card dos-card">
+        <div class="breakdown-icon"><span class="material-icons">bolt</span></div>
+        <div class="breakdown-body">
+            <div class="breakdown-value" id="bd-dos">{{ stats.dos }}</div>
+            <div class="breakdown-label">DoS Attacks</div>
+        </div>
+    </div>
+    <div class="breakdown-card probe-card">
+        <div class="breakdown-icon"><span class="material-icons">radar</span></div>
+        <div class="breakdown-body">
+            <div class="breakdown-value" id="bd-probing">{{ stats.probing }}</div>
+            <div class="breakdown-label">Probe / Scan</div>
+        </div>
+    </div>
+    <div class="breakdown-card r2l-card">
+        <div class="breakdown-icon"><span class="material-icons">vpn_key</span></div>
+        <div class="breakdown-body">
+            <div class="breakdown-value" id="bd-r2l">{{ stats.r2l }}</div>
+            <div class="breakdown-label">R2L Intrusions</div>
+        </div>
+    </div>
+    <div class="breakdown-card u2r-card">
+        <div class="breakdown-icon"><span class="material-icons">admin_panel_settings</span></div>
+        <div class="breakdown-body">
+            <div class="breakdown-value" id="bd-u2r">{{ stats.u2r }}</div>
+            <div class="breakdown-label">U2R Escalations</div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

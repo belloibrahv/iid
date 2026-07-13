@@ -45,6 +45,21 @@ def create_app():
         print(f"Warning: Could not load inference engine: {e}")
         print("Please run the ML pipeline first to generate model artefacts.")
 
+    # Seed historical simulated data and start live simulation
+    with app.app_context():
+        try:
+            from simulate_traffic import generate_historical_data, start_live_simulation
+            from core.database import Database as _DB
+            _db = _DB()
+            # Only seed if the database is essentially empty
+            stats = _db.get_stats()
+            if stats.get('total_processed', 0) < 10:
+                print("[SIM] Empty database — seeding 800 historical records...")
+                generate_historical_data(n=800, hours=24)
+            start_live_simulation()
+        except Exception as e:
+            print(f"Warning: Could not start simulation: {e}")
+
     @app.route('/health')
     def health():
         return {'status': 'ok'}, 200

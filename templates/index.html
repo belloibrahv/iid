@@ -3,285 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligent Intrusion Detection System</title>
+    <title>Intelligent Intrusion Detection System — TASUED</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="home-nav">
+    <nav class="home-nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="material-icons logo-icon">security</span>
-                <span class="logo-text">IDS</span>
+                <span class="logo-text">IDS <span class="logo-sub">/ TASUED</span></span>
             </div>
             <div class="nav-menu">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#how-it-works" class="nav-link">How It Works</a>
-                <a href="#team" class="nav-link">Our Team</a>
-                <a href="/login" class="nav-link nav-cta">
-                    <span class="material-icons nav-icon">login</span>
-                    Login to Dashboard
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#methodology" class="nav-link">Methodology</a>
+                <a href="#results" class="nav-link">Results</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="/login" class="nav-cta">
+                    <span class="material-icons nav-icon">dashboard</span>
+                    Dashboard
                 </a>
             </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <span class="material-icons">menu</span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-grid-overlay"></div>
         <div class="hero-container">
-            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+                <div class="hero-badge">
+                    <span class="material-icons">school</span>
+                    Final Year Research Project · TASUED · Computer Science
+                </div>
                 <h1 class="hero-title">
-                    <span class="hero-title-line">Protect Your Network</span>
-                    <span class="hero-title-line hero-title-highlight">From Bad Attacks</span>
+                    Intelligent Intrusion<br>
+                    <span class="hero-title-highlight">Detection System</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Our smart system watches over your computer network and stops hackers before they can cause any harm. It's like having a security guard that never sleeps!
+                    A machine learning–based network security system trained on the NSL-KDD benchmark dataset, 
+                    capable of classifying five categories of network intrusions in real time using 
+                    Random Forest, Decision Tree, and SVM classifiers.
                 </p>
                 <div class="hero-buttons">
                     <a href="/login" class="btn btn-primary btn-large">
                         <span class="material-icons btn-icon">rocket_launch</span>
-                        Get Started
+                        Access Dashboard
                     </a>
-                    <a href="#how-it-works" class="btn btn-secondary btn-large">
-                        <span class="material-icons btn-icon">info</span>
-                        Learn More
+                    <a href="#research" class="btn btn-outline btn-large">
+                        <span class="material-icons btn-icon">article</span>
+                        Read Research
                     </a>
                 </div>
             </div>
-            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
-                <div class="hero-shape hero-shape-1"></div>
-                <div class="hero-shape hero-shape-2"></div>
-                <div class="hero-shape hero-shape-3"></div>
-                <div class="hero-icon-container">
-                    <span class="material-icons hero-icon">shield</span>
+            <div class="hero-visual" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                <div class="hero-stats-card">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">5</span>
+                        <span class="hero-stat-label">Attack Classes</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">20</span>
+                        <span class="hero-stat-label">Selected Features</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">3</span>
+                        <span class="hero-stat-label">ML Models</span>
+                    </div>
+                </div>
+                <div class="hero-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">ids_inference.py</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="t-dim">$</span> <span class="t-cmd">python</span> inference.py --model rf</p>
+                        <p><span class="t-dim">[INFO]</span> Loading model artefacts...</p>
+                        <p><span class="t-dim">[INFO]</span> Preprocessing 20 features...</p>
+                        <p><span class="t-green">✓</span> Classification: <span class="t-yellow">DoS Attack</span></p>
+                        <p><span class="t-green">✓</span> Confidence: <span class="t-cyan">94.2%</span></p>
+                        <p><span class="t-green">✓</span> Alert dispatched <span class="t-blink">_</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span class="material-icons">expand_more</span>
+        </div>
+    </section>
+
+    <!-- Research Context Section -->
+    <section id="research" class="section section-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Background</span>
+                <h2 class="section-title">Research Overview</h2>
+                <p class="section-subtitle">
+                    This project investigates the effectiveness of supervised machine learning algorithms 
+                    in detecting and classifying network intrusions using the NSL-KDD benchmark dataset.
+                </p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="rc-icon-wrap">
+                        <span class="material-icons">dataset</span>
+                    </div>
+                    <h3>NSL-KDD Dataset</h3>
+                    <p>
+                        An improved version of the KDD Cup 1999 dataset, eliminating duplicate records 
+                        and redundant instances. Used as the standard benchmark for IDS research worldwide.
+                    </p>
+                </div>
+                <div class="research-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="rc-icon-wrap">
+                        <span class="material-icons">model_training</span>
+                    </div>
+                    <h3>Three ML Classifiers</h3>
+                    <p>
+                        Random Forest, Decision Tree, and Support Vector Machine (SVM) classifiers 
+                        were trained, evaluated, and compared for intrusion detection performance.
+                    </p>
+                </div>
+                <div class="research-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="rc-icon-wrap">
+                        <span class="material-icons">tune</span>
+                    </div>
+                    <h3>Feature Engineering</h3>
+                    <p>
+                        20 optimal network traffic features were selected from 41 raw attributes 
+                        using feature importance analysis to improve model efficiency and accuracy.
+                    </p>
+                </div>
+                <div class="research-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="rc-icon-wrap">
+                        <span class="material-icons">account_balance</span>
+                    </div>
+                    <h3>Academic Institution</h3>
+                    <p>
+                        Conducted at the Tai Solarin University of Education (TASUED), 
+                        Department of Computer Science, under the supervision of Mrs. Ogunbanjo.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section section-light">
+    <!-- Attack Classes Section -->
+    <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">What is This System?</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Let us explain in simple words</p>
-            
-            <div class="about-grid">
-                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="about-icon-container">
-                        <span class="material-icons about-icon">visibility</span>
-                    </div>
-                    <h3 class="about-card-title">It Watches Everything</h3>
-                    <p class="about-card-text">
-                        Our system keeps an eye on all the data moving through your network. It looks at every single message that travels between computers.
-                    </p>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag light">Classification</span>
+                <h2 class="section-title light">Attack Categories Detected</h2>
+                <p class="section-subtitle light">
+                    The system classifies network traffic into five distinct categories based on NSL-KDD labels.
+                </p>
+            </div>
+            <div class="attack-grid">
+                <div class="attack-card normal-card" data-aos="zoom-in" data-aos-delay="100">
+                    <span class="attack-pill normal">NORMAL</span>
+                    <h4>Normal Traffic</h4>
+                    <p>Legitimate network connections with no malicious intent or abnormal behaviour patterns.</p>
                 </div>
-                <div class="about-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="about-icon-container">
-                        <span class="material-icons about-icon">psychology</span>
-                    </div>
-                    <h3 class="about-card-title">It's Really Smart</h3>
-                    <p class="about-card-text">
-                        Using artificial intelligence (like a robot brain), it learns what normal traffic looks like and spots anything that seems strange or dangerous.
-                    </p>
+                <div class="attack-card" data-aos="zoom-in" data-aos-delay="150">
+                    <span class="attack-pill dos">DoS</span>
+                    <h4>Denial of Service</h4>
+                    <p>Attacks that flood network resources, making services unavailable to legitimate users. e.g. SYN flood, ping-of-death.</p>
                 </div>
-                <div class="about-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="about-icon-container">
-                        <span class="material-icons about-icon">notifications_active</span>
-                    </div>
-                    <h3 class="about-card-title">It Alerts You Fast</h3>
-                    <p class="about-card-text">
-                        When it finds something bad, it immediately tells you so you can stop the attack before it causes any problems.
-                    </p>
+                <div class="attack-card" data-aos="zoom-in" data-aos-delay="200">
+                    <span class="attack-pill probing">Probe</span>
+                    <h4>Probing / Scanning</h4>
+                    <p>Surveillance attacks that gather information about the network to identify vulnerabilities for future exploitation.</p>
+                </div>
+                <div class="attack-card" data-aos="zoom-in" data-aos-delay="250">
+                    <span class="attack-pill r2l">R2L</span>
+                    <h4>Remote-to-Local</h4>
+                    <p>Unauthorised remote access attacks where an intruder exploits vulnerabilities to gain local account access.</p>
+                </div>
+                <div class="attack-card" data-aos="zoom-in" data-aos-delay="300">
+                    <span class="attack-pill u2r">U2R</span>
+                    <h4>User-to-Root</h4>
+                    <p>Privilege escalation attacks where a local user illegitimately gains root or superuser system privileges.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="section section-dark">
+    <!-- Methodology Section -->
+    <section id="methodology" class="section section-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">How Does It Work?</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Simple steps to keep you safe</p>
-            
-            <div class="steps-container">
-                <div class="step-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="step-number">
-                        <span class="material-icons">storage</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Collect Data</h3>
-                        <p class="step-text">
-                            The system gathers information about all the network traffic - who's sending data, where it's going, and what it contains.
-                        </p>
-                    </div>
-                </div>
-                <div class="step-item" data-aos="fade-left" data-aos-delay="300">
-                    <div class="step-number">
-                        <span class="material-icons">smart_toy</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Analyze with AI</h3>
-                        <p class="step-text">
-                            Our smart computer programs (machine learning models) look at the data and decide if it's normal or if it looks like an attack.
-                        </p>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Pipeline</span>
+                <h2 class="section-title">System Methodology</h2>
+                <p class="section-subtitle">
+                    The IDS follows a structured ML pipeline from raw network data through to real-time classification and alerting.
+                </p>
+            </div>
+            <div class="pipeline">
+                <div class="pipeline-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="pipeline-num">01</div>
+                    <div class="pipeline-content">
+                        <span class="material-icons pipeline-icon">storage</span>
+                        <div>
+                            <h3>Data Collection</h3>
+                            <p>Network traffic records from the NSL-KDD benchmark dataset (KDDTrain+ / KDDTest+) covering normal and attack connections across 41 raw features.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="step-item" data-aos="fade-right" data-aos-delay="400">
-                    <div class="step-number">
-                        <span class="material-icons">bug_report</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Detect Attacks</h3>
-                        <p class="step-text">
-                            The system can spot different types of bad attacks like DoS (overloading systems), probing (snooping around), and more.
-                        </p>
+                <div class="pipeline-connector" data-aos="fade-up" data-aos-delay="150"></div>
+                <div class="pipeline-step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="pipeline-num">02</div>
+                    <div class="pipeline-content">
+                        <span class="material-icons pipeline-icon">transform</span>
+                        <div>
+                            <h3>Preprocessing</h3>
+                            <p>Categorical features (protocol_type, service, flag) are label-encoded. Numerical features are standardised using StandardScaler to normalise value ranges.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="step-item" data-aos="fade-left" data-aos-delay="500">
-                    <div class="step-number">
-                        <span class="material-icons">verified_user</span>
+                <div class="pipeline-connector" data-aos="fade-up" data-aos-delay="250"></div>
+                <div class="pipeline-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="pipeline-num">03</div>
+                    <div class="pipeline-content">
+                        <span class="material-icons pipeline-icon">filter_alt</span>
+                        <div>
+                            <h3>Feature Selection</h3>
+                            <p>20 most discriminative features are selected from 41 using Random Forest feature importance scores, reducing dimensionality and improving inference speed.</p>
+                        </div>
                     </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Alert & Protect</h3>
-                        <p class="step-text">
-                            When danger is found, you get an instant alert with all the details so you can take action right away to stay safe.
-                        </p>
+                </div>
+                <div class="pipeline-connector" data-aos="fade-up" data-aos-delay="350"></div>
+                <div class="pipeline-step" data-aos="fade-right" data-aos-delay="400">
+                    <div class="pipeline-num">04</div>
+                    <div class="pipeline-content">
+                        <span class="material-icons pipeline-icon">model_training</span>
+                        <div>
+                            <h3>Model Training</h3>
+                            <p>Three classifiers — Random Forest, Decision Tree, and SVM — are trained on the processed dataset. SMOTE oversampling addresses class imbalance in minority attack types.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pipeline-connector" data-aos="fade-up" data-aos-delay="450"></div>
+                <div class="pipeline-step" data-aos="fade-right" data-aos-delay="500">
+                    <div class="pipeline-num">05</div>
+                    <div class="pipeline-content">
+                        <span class="material-icons pipeline-icon">bolt</span>
+                        <div>
+                            <h3>Real-Time Inference</h3>
+                            <p>Incoming network traffic is preprocessed and classified in real time. Detected attacks are immediately logged and security alerts are raised in the dashboard.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section section-light">
+    <!-- Results Section -->
+    <section id="results" class="section section-dark">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Cool Features</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">What makes our system special</p>
-            
-            <div class="features-grid">
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">speed</span>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag light">Evaluation</span>
+                <h2 class="section-title light">Model Performance Results</h2>
+                <p class="section-subtitle light">
+                    All three classifiers were evaluated on the KDDTest+ holdout set. 
+                    Results show model accuracy and F1-score across all five traffic classes.
+                </p>
+            </div>
+            <div class="results-grid">
+                <div class="result-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-model-name">
+                        <span class="material-icons">forest</span>
+                        Random Forest
                     </div>
-                    <h3 class="feature-title">Super Fast</h3>
-                    <p class="feature-text">Works in real-time to catch attacks as they happen, not after it's too late.</p>
+                    <div class="result-accuracy">
+                        <span class="result-number">69%</span>
+                        <span class="result-label">Accuracy</span>
+                    </div>
+                    <div class="result-bar-wrap">
+                        <div class="result-bar rf-bar" style="width: 69%"></div>
+                    </div>
+                    <div class="result-meta">
+                        <span>AUC-ROC: 0.547</span>
+                        <span>F1 (DoS): 0.82</span>
+                    </div>
                 </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">gps_fixed</span>
+                <div class="result-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-model-name">
+                        <span class="material-icons">account_tree</span>
+                        Decision Tree
                     </div>
-                    <h3 class="feature-title">Very Accurate</h3>
-                    <p class="feature-text">Our AI is trained on lots of data to make sure it doesn't make mistakes.</p>
+                    <div class="result-accuracy">
+                        <span class="result-number">57.5%</span>
+                        <span class="result-label">Accuracy</span>
+                    </div>
+                    <div class="result-bar-wrap">
+                        <div class="result-bar dt-bar" style="width: 57.5%"></div>
+                    </div>
+                    <div class="result-meta">
+                        <span>AUC-ROC: 0.529</span>
+                        <span>F1 (DoS): 0.77</span>
+                    </div>
                 </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">dashboard</span>
+                <div class="result-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-model-name">
+                        <span class="material-icons">hub</span>
+                        SVM
                     </div>
-                    <h3 class="feature-title">Easy Dashboard</h3>
-                    <p class="feature-text">See everything on one simple screen with colorful charts and clear information.</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="350">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">notifications</span>
+                    <div class="result-accuracy">
+                        <span class="result-number">69%</span>
+                        <span class="result-label">Accuracy</span>
                     </div>
-                    <h3 class="feature-title">Smart Alerts</h3>
-                    <p class="feature-text">Get notified only when something important happens, so you're not overwhelmed.</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">assessment</span>
+                    <div class="result-bar-wrap">
+                        <div class="result-bar svm-bar" style="width: 69%"></div>
                     </div>
-                    <h3 class="feature-title">Detailed Reports</h3>
-                    <p class="feature-text">Keep track of all events and attacks with detailed logs and reports.</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="450">
-                    <div class="feature-icon-container">
-                        <span class="material-icons feature-icon">lock</span>
+                    <div class="result-meta">
+                        <span>AUC-ROC: 0.479</span>
+                        <span>F1 (DoS): 0.82</span>
                     </div>
-                    <h3 class="feature-title">Secure Login</h3>
-                    <p class="feature-text">Only authorized people can access the system to keep everything safe.</p>
                 </div>
             </div>
+            <p class="results-note" data-aos="fade-up" data-aos-delay="400">
+                <span class="material-icons">info</span>
+                Accuracy is computed on the KDDTest+ subset (200 samples). The DoS class dominates the test distribution (69%), 
+                which explains high weighted accuracy alongside lower macro-averaged metrics for minority classes.
+                Full confusion matrices and ROC curves are available in the dashboard.
+            </p>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="section section-dark">
+    <section id="team" class="section section-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Meet Our Team</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">The people who built this amazing system</p>
-            
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">People</span>
+                <h2 class="section-title">Project Team</h2>
+                <p class="section-subtitle">
+                    This research was conducted by final-year Computer Science students at the 
+                    Tai Solarin University of Education (TASUED).
+                </p>
+            </div>
+
             <!-- Supervisor -->
-            <div class="team-section">
-                <h3 class="team-section-title" data-aos="fade-up" data-aos-delay="200">Supervisor</h3>
-                <div class="supervisor-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="supervisor-image">
-                        <img class="team-avatar avatar-large" src="{{ url_for('static', filename='images/team/supervisor-ogunbanjo.png') }}" alt="Portrait of Mrs. Ogunbanjo">
+            <div class="team-block" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="team-block-label">Project Supervisor</h3>
+                <div class="supervisor-card">
+                    <div class="supervisor-img-wrap">
+                        <img class="team-photo supervisor-photo"
+                             src="{{ url_for('static', filename='images/team/supervisor-ogunbanjo.png') }}"
+                             alt="Portrait of Mrs. Ogunbanjo">
                     </div>
                     <div class="supervisor-info">
                         <h4 class="supervisor-name">Mrs. Ogunbanjo</h4>
-                        <p class="supervisor-role">
-                            <span class="material-icons role-icon">school</span>
-                            Project Supervisor
+                        <p class="supervisor-title">
+                            <span class="material-icons">school</span>
+                            Project Supervisor — Department of Computer Science, TASUED
                         </p>
-                        <p class="supervisor-description">
-                            Our wonderful supervisor who guided us throughout this project with her expertise and support.
+                        <p class="supervisor-desc">
+                            Provided academic guidance and oversight throughout the research process, 
+                            from problem formulation and dataset selection to model evaluation and system deployment.
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Student Researchers -->
-            <div class="team-section">
-                <h3 class="team-section-title" data-aos="fade-up" data-aos-delay="200">Student Researchers</h3>
+            <div class="team-block" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="team-block-label">Student Researchers</h3>
                 <div class="researchers-grid">
-                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="300">
-                        <div class="researcher-image">
-                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/alobalade-david-victor.png') }}" alt="Portrait of Alobalade David Victor">
+                    <div class="researcher-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="researcher-img-wrap">
+                            <img class="team-photo"
+                                 src="{{ url_for('static', filename='images/team/alobalade-david-victor.png') }}"
+                                 alt="Portrait of Alobalade David Victor">
                         </div>
-                        <h4 class="researcher-name">Alobalade David Victor</h4>
-                        <p class="researcher-matric">20220204294</p>
-                        <p class="researcher-role">
-                            <span class="material-icons role-icon">badge</span>
-                            Student Researcher
-                        </p>
+                        <div class="researcher-info">
+                            <h4 class="researcher-name">Alobalade David Victor</h4>
+                            <p class="researcher-matric">Matric No: 20220204294</p>
+                            <span class="researcher-badge">Student Researcher</span>
+                        </div>
                     </div>
-                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="350">
-                        <div class="researcher-image">
-                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/durojaiye-temitayo-samson.png') }}" alt="Portrait of Durojaiye Temitayo Samson">
+                    <div class="researcher-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="researcher-img-wrap">
+                            <img class="team-photo"
+                                 src="{{ url_for('static', filename='images/team/durojaiye-temitayo-samson.png') }}"
+                                 alt="Portrait of Durojaiye Temitayo Samson">
                         </div>
-                        <h4 class="researcher-name">Durojaiye Temitayo Samson</h4>
-                        <p class="researcher-matric">20220204270</p>
-                        <p class="researcher-role">
-                            <span class="material-icons role-icon">badge</span>
-                            Student Researcher
-                        </p>
+                        <div class="researcher-info">
+                            <h4 class="researcher-name">Durojaiye Temitayo Samson</h4>
+                            <p class="researcher-matric">Matric No: 20220204270</p>
+                            <span class="researcher-badge">Student Researcher</span>
+                        </div>
                     </div>
-                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="400">
-                        <div class="researcher-image">
-                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/oseni-nafiu-bolanle.png') }}" alt="Portrait of Oseni Nafiu Bolanle">
+                    <div class="researcher-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="researcher-img-wrap">
+                            <img class="team-photo"
+                                 src="{{ url_for('static', filename='images/team/oseni-nafiu-bolanle.png') }}"
+                                 alt="Portrait of Oseni Nafiu Bolanle">
                         </div>
-                        <h4 class="researcher-name">Oseni Nafiu Bolanle</h4>
-                        <p class="researcher-matric">20220204301</p>
-                        <p class="researcher-role">
-                            <span class="material-icons role-icon">badge</span>
-                            Student Researcher
-                        </p>
+                        <div class="researcher-info">
+                            <h4 class="researcher-name">Oseni Nafiu Bolanle</h4>
+                            <p class="researcher-matric">Matric No: 20220204301</p>
+                            <span class="researcher-badge">Student Researcher</span>
+                        </div>
                     </div>
-                    <div class="researcher-card" data-aos="flip-up" data-aos-delay="450">
-                        <div class="researcher-image">
-                            <img class="team-avatar" src="{{ url_for('static', filename='images/team/sofoluwe-omotola-oyindamola.png') }}" alt="Portrait of Sofoluwe Omotola Oyindamola">
+                    <div class="researcher-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="researcher-img-wrap">
+                            <img class="team-photo"
+                                 src="{{ url_for('static', filename='images/team/sofoluwe-omotola-oyindamola.png') }}"
+                                 alt="Portrait of Sofoluwe Omotola Oyindamola">
                         </div>
-                        <h4 class="researcher-name">Sofoluwe Omotola Oyindamola</h4>
-                        <p class="researcher-matric">20220204286</p>
-                        <p class="researcher-role">
-                            <span class="material-icons role-icon">badge</span>
-                            Student Researcher
-                        </p>
+                        <div class="researcher-info">
+                            <h4 class="researcher-name">Sofoluwe Omotola Oyindamola</h4>
+                            <p class="researcher-matric">Matric No: 20220204286</p>
+                            <span class="researcher-badge">Student Researcher</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -289,13 +436,18 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" data-aos="fade-up">
-        <div class="container">
-            <h2 class="cta-title">Ready to Protect Your Network?</h2>
-            <p class="cta-subtitle">Start using our Intelligent Intrusion Detection System today</p>
+    <section class="cta-section">
+        <div class="cta-bg-shape"></div>
+        <div class="container" data-aos="fade-up">
+            <span class="material-icons cta-icon">shield</span>
+            <h2 class="cta-title">Explore the Live Dashboard</h2>
+            <p class="cta-subtitle">
+                Access real-time intrusion detection, model performance reports, 
+                alert management, and traffic logs.
+            </p>
             <a href="/login" class="btn btn-primary btn-large">
-                <span class="material-icons btn-icon">dashboard</span>
-                Access Dashboard
+                <span class="material-icons btn-icon">login</span>
+                Log In to Dashboard
             </a>
         </div>
     </section>
@@ -304,76 +456,89 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4 class="footer-title">
-                        <span class="material-icons footer-icon">security</span>
-                        About IDS
-                    </h4>
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="material-icons">security</span>
+                        IDS / TASUED
+                    </div>
                     <p class="footer-text">
-                        An Intelligent Intrusion Detection System built to protect networks from cyber attacks using machine learning.
+                        An Intelligent Intrusion Detection System developed as a final-year 
+                        research project at Tai Solarin University of Education.
                     </p>
                 </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">
-                        <span class="material-icons footer-icon">link</span>
-                        Quick Links
-                    </h4>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="#about"><span class="material-icons link-icon">arrow_forward</span>About</a></li>
-                        <li><a href="#how-it-works"><span class="material-icons link-icon">arrow_forward</span>How It Works</a></li>
-                        <li><a href="#team"><span class="material-icons link-icon">arrow_forward</span>Our Team</a></li>
-                        <li><a href="/login"><span class="material-icons link-icon">arrow_forward</span>Dashboard</a></li>
+                        <li><a href="#research">Research Overview</a></li>
+                        <li><a href="#methodology">Methodology</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#team">Project Team</a></li>
+                        <li><a href="/login">Dashboard</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">
-                        <span class="material-icons footer-icon">contact_mail</span>
-                        Contact
-                    </h4>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Dataset</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">NSL-KDD Benchmark</a></li>
+                        <li><a href="#">KDDTrain+</a></li>
+                        <li><a href="#">KDDTest+</a></li>
+                        <li><a href="#">5 Attack Classes</a></li>
+                        <li><a href="#">20 Selected Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Institution</h4>
                     <p class="footer-text">
-                        For questions or support, please contact our team.
+                        Tai Solarin University of Education<br>
+                        Department of Computer Science<br>
+                        Ijebu-Ode, Ogun State, Nigeria
                     </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Intelligent Intrusion Detection System. All rights reserved.</p>
+                <p>&copy; 2025 Intelligent Intrusion Detection System · TASUED Final Year Project · All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
+        AOS.init({ duration: 700, easing: 'ease-out', once: true, offset: 80 });
+
+        // Navbar scroll behaviour
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 60);
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Mobile nav toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-open');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                navMenu.classList.remove('nav-open');
             });
         });
 
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.home-nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
+        // Animate result bars on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.result-bar').forEach(bar => {
+                        bar.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.results-grid').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
