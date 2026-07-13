@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In — IDS / TASUED</title>
+    <title>Sign In — IDS / TASFUED</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -87,6 +87,15 @@
 
         .brand-logo .material-icons { color: var(--cyan); font-size: 1.4rem; }
         .brand-logo-sub { color: var(--muted); font-weight: 400; }
+
+        /* TASFUED crest image in login brand panel */
+        .brand-institution-img {
+            height: 36px;
+            width: 36px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin-left: 0.25rem;
+        }
 
         .brand-headline {
             font-size: 2.6rem;
@@ -324,7 +333,8 @@
         <div class="login-brand-content">
             <a href="/" class="brand-logo">
                 <span class="material-icons">security</span>
-                IDS <span class="brand-logo-sub">&nbsp;/ TASUED</span>
+                IDS <span class="brand-logo-sub">&nbsp;/ TASFUED</span>
+                <img src="/static/images/tasfued.png" alt="TASFUED Logo" class="brand-institution-img">
             </a>
             <h1 class="brand-headline">
                 Intelligent<br>
@@ -411,7 +421,7 @@
 
         <div class="institution-tag">
             <span class="material-icons">school</span>
-            Tai Solarin University of Education · Dept. of Computer Science
+            Tai Solarin Federal University of Education · Dept. of Computer Science
         </div>
     </div>
 

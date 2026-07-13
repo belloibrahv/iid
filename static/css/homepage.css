@@ -1,5 +1,5 @@
 /* ============================================================
-   Homepage — Intelligent Intrusion Detection System · TASUED
+   Homepage — Intelligent Intrusion Detection System · TASFUED
    Color palette:
      Navy dark  : #0f172a
      Navy mid   : #1e293b
@@ -90,6 +90,15 @@ body {
 
 .logo-icon { color: var(--cyan); font-size: 1.4rem; }
 .logo-sub  { color: var(--muted); font-weight: 400; font-size: 0.95rem; }
+
+/* TASFUED logo image in nav */
+.logo-institution-img {
+    height: 34px;
+    width: 34px;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+}
 
 .nav-menu {
     display: flex;
